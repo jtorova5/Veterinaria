@@ -1,17 +1,6 @@
 
 // Definición de funciones
 
-function newRandomId() {
-    const id = parseInt(Math.random() * 1000000000000000);
-    return id
-}
-
-function getAge(date) {
-    return Math.abs(
-        new Date(Date.now() - date.getTime()).getUTCFullYear() - 1970
-    )
-}
-
 function getOwners() {
     console.log('Dueños:')
     console.table(owners)
@@ -27,7 +16,7 @@ let pets = [
         petName: "Spok",
         petSpecies: "Cat",
         petBreed: "Stray",
-        petBirth: new Date("12/07/2019"),
+        petBirth: calculateAge(new Date("12/07/2019")),
         petWeight: 10,
         petState: "Estable",
         nameOwner: "Marc",
@@ -40,7 +29,7 @@ let pets = [
         petName: "Buddy",
         petSpecies: "Dog",
         petBreed: "Golden Retriever",
-        petBirth: new Date("05/15/2020"),
+        petBirth: calculateAge(new Date("05/15/2020")),
         petWeight: 25,
         petState: "Estable",
         nameOwner: "Emily",
@@ -53,7 +42,7 @@ let pets = [
         petName: "Whiskers",
         petSpecies: "Cat",
         petBreed: "Siamese",
-        petBirth: new Date("08/20/2018"),
+        petBirth: calculateAge(new Date("08/20/2018")),
         petWeight: 8,
         petState: "Estable",
         nameOwner: "Sarah",
@@ -66,7 +55,7 @@ let pets = [
         petName: "Rio",
         petSpecies: "Bird",
         petBreed: "Parakeet",
-        petBirth: new Date("03/10/2021"),
+        petBirth: calculateAge(new Date("03/10/2021")),
         petWeight: 0.5,
         petState: "Crítico",
         nameOwner: "Juan",
@@ -79,7 +68,7 @@ let pets = [
         petName: "Spike",
         petSpecies: "Hedgehog",
         petBreed: "African Pygmy",
-        petBirth: new Date("10/02/2020"),
+        petBirth: calculateAge(new Date("10/02/2020")),
         petWeight: 0.3,
         petState: "Estable",
         nameOwner: "Alex",
@@ -92,7 +81,7 @@ let pets = [
         petName: "Lola",
         petSpecies: "Rabbit",
         petBreed: "Dwarf Hotot",
-        petBirth: new Date("04/25/2022"),
+        petBirth: calculateAge(new Date("04/25/2022")),
         petWeight: 1.2,
         petState: "Estable",
         nameOwner: "Sophia",
@@ -105,7 +94,7 @@ let pets = [
         petName: "Gizmo",
         petSpecies: "Ferret",
         petBreed: "Sable",
-        petBirth: new Date("11/12/2020"),
+        petBirth: calculateAge(new Date("11/12/2020")),
         petWeight: 0.7,
         petState: "playful",
         nameOwner: "Michael",
@@ -118,7 +107,7 @@ let pets = [
         petName: "Ziggy",
         petSpecies: "Snake",
         petBreed: "Ball Python",
-        petBirth: new Date("09/30/2019"),
+        petBirth: calculateAge(new Date("09/30/2019")),
         petWeight: 1.5,
         petState: "Crítico",
         nameOwner: "Rachel",
@@ -131,7 +120,7 @@ let pets = [
         petName: "Snowball",
         petSpecies: "Guinea Pig",
         petBreed: "Abyssinian",
-        petBirth: new Date("06/08/2021"),
+        petBirth: calculateAge(new Date("06/08/2021")),
         petWeight: 0.8,
         petState: "Estable",
         nameOwner: "David",
@@ -144,7 +133,7 @@ let pets = [
         petName: "Bubbles",
         petSpecies: "Fish",
         petBreed: "Goldfish",
-        petBirth: new Date("01/14/2020"),
+        petBirth: calculateAge(new Date("01/14/2020")),
         petWeight: 0.1,
         petState: "Crítico",
         nameOwner: "Emma",
@@ -424,7 +413,7 @@ for (let i = 0; i < pets.length; i++) {
             <h2 class="card-title text-center">${pets[i].petName}</h2>
             <p><strong>Especie:</strong> ${pets[i].petSpecies}</p>
             <p><strong>Raza:</strong> ${pets[i].petBreed}</p>
-            <p><strong>Edad:</strong> ${pets[i].petAge}</p>
+            <p><strong>Edad:</strong> ${pets[i].petBirth}</p>
             <p><strong>Peso:</strong> ${pets[i].petWeight}</p>
             <p><strong>Estado:</strong> ${pets[i].petState}</p>
             <p><strong>Nombre del dueño:</strong> ${pets[i].nameOwner}</p>

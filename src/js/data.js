@@ -13,7 +13,7 @@ let pets = [
             phoneOwner: "3005555555",
             emailOwner: "marc@gmail.com",
         },
-        img: "./public/img/prueba.webp"
+        img: "./public/img/strayCat.webp"
     },
     {
         petName: "Buddy",

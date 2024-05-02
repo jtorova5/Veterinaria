@@ -19,10 +19,12 @@ let pets = [
         petBirth: calculateAge(new Date("12/07/2019")),
         petWeight: 10,
         petState: "Estable",
-        nameOwner: "Marc",
-        documentOwner: "12932372",
-        phoneOwner: "3005555555",
-        emailOwner: "marc@gmail.com",
+        owner: {
+            nameOwner: "Marc",
+            documentOwner: "12932372",
+            phoneOwner: "3005555555",
+            emailOwner: "marc@gmail.com",
+        },
         img: "./public/img/strayCat.webp"
     },
     {
@@ -32,10 +34,12 @@ let pets = [
         petBirth: calculateAge(new Date("05/15/2020")),
         petWeight: 25,
         petState: "Estable",
-        nameOwner: "Emily",
-        documentOwner: "54321678",
-        phoneOwner: "3101234567",
-        emailOwner: "emily@example.com",
+        owner: {
+            nameOwner: "Emily",
+            documentOwner: "54321678",
+            phoneOwner: "3101234567",
+            emailOwner: "emily@example.com",
+        },
         img: "./public/img/goldenRetriever.webp"
     },
     {
@@ -45,10 +49,12 @@ let pets = [
         petBirth: calculateAge(new Date("08/20/2018")),
         petWeight: 8,
         petState: "Estable",
-        nameOwner: "Sarah",
-        documentOwner: "98765432",
-        phoneOwner: "4157890123",
-        emailOwner: "sarah@example.com",
+        owner: {
+            nameOwner: "Sarah",
+            documentOwner: "98765432",
+            phoneOwner: "4157890123",
+            emailOwner: "sarah@example.com",
+        },
         img: "./public/img/siameseCat.webp"
     },
     {
@@ -58,10 +64,12 @@ let pets = [
         petBirth: calculateAge(new Date("03/10/2021")),
         petWeight: 0.5,
         petState: "Crítico",
-        nameOwner: "Juan",
-        documentOwner: "74185296",
-        phoneOwner: "2123456789",
-        emailOwner: "juan@example.com",
+        owner: {
+            nameOwner: "Juan",
+            documentOwner: "74185296",
+            phoneOwner: "2123456789",
+            emailOwner: "juan@example.com",
+        },
         img: "./public/img/parakeet.webp"
     },
     {
@@ -71,10 +79,12 @@ let pets = [
         petBirth: calculateAge(new Date("10/02/2020")),
         petWeight: 0.3,
         petState: "Estable",
-        nameOwner: "Alex",
-        documentOwner: "36925814",
-        phoneOwner: "9178901234",
-        emailOwner: "alex@example.com",
+        owner: {
+            nameOwner: "Alex",
+            documentOwner: "36925814",
+            phoneOwner: "9178901234",
+            emailOwner: "alex@example.com",
+        },
         img: "./public/img/africanPygmy.webp"
     },
     {
@@ -84,10 +94,12 @@ let pets = [
         petBirth: calculateAge(new Date("04/25/2022")),
         petWeight: 1.2,
         petState: "Estable",
-        nameOwner: "Sophia",
-        documentOwner: "15935748",
-        phoneOwner: "6506789012",
-        emailOwner: "sophia@example.com",
+        owner: {
+            nameOwner: "Sophia",
+            documentOwner: "15935748",
+            phoneOwner: "6506789012",
+            emailOwner: "sophia@example.com",
+        },
         img: "./public/img/dwarfHotot.webp"
     },
     {
@@ -97,10 +109,12 @@ let pets = [
         petBirth: calculateAge(new Date("11/12/2020")),
         petWeight: 0.7,
         petState: "playful",
-        nameOwner: "Michael",
-        documentOwner: "24680135",
-        phoneOwner: "3234567890",
-        emailOwner: "michael@example.com",
+        owner: {
+            nameOwner: "Michael",
+            documentOwner: "24680135",
+            phoneOwner: "3234567890",
+            emailOwner: "michael@example.com",
+        },
         img: "./public/img/sableFerret.webp"
     },
     {
@@ -110,10 +124,12 @@ let pets = [
         petBirth: calculateAge(new Date("09/30/2019")),
         petWeight: 1.5,
         petState: "Crítico",
-        nameOwner: "Rachel",
-        documentOwner: "80246713",
-        phoneOwner: "2126789012",
-        emailOwner: "rachel@example.com",
+        owner: {
+            nameOwner: "Rachel",
+            documentOwner: "80246713",
+            phoneOwner: "2126789012",
+            emailOwner: "rachel@example.com",
+        },
         img: "./public/img/ballPython.webp"
     },
     {
@@ -123,10 +139,12 @@ let pets = [
         petBirth: calculateAge(new Date("06/08/2021")),
         petWeight: 0.8,
         petState: "Estable",
-        nameOwner: "David",
-        documentOwner: "75395146",
-        phoneOwner: "2134567890",
-        emailOwner: "david@example.com",
+        owner: {
+            nameOwner: "David",
+            documentOwner: "75395146",
+            phoneOwner: "2134567890",
+            emailOwner: "david@example.com",
+        },
         img: "./public/img/guineaPig.webp"
     },
     {
@@ -136,10 +154,12 @@ let pets = [
         petBirth: calculateAge(new Date("01/14/2020")),
         petWeight: 0.1,
         petState: "Crítico",
-        nameOwner: "Emma",
-        documentOwner: "12345678",
-        phoneOwner: "4158901234",
-        emailOwner: "emma@example.com",
+        owner: {
+            nameOwner: "Emma",
+            documentOwner: "12345678",
+            phoneOwner: "4158901234",
+            emailOwner: "emma@example.com",
+        },
         img: "./public/img/goldFish.webp"
     }
 ]
@@ -403,23 +423,22 @@ header.innerHTML = (`
 // Main section
 const main = document.querySelector('main')
 
-
-for (let i = 0; i < pets.length; i++) {
+for (const pet of pets) {
     main.innerHTML += (`
     <div class="card m-5 text-bg-light border-secondary border-2 rounded-3 w-25">
-        <img src="${pets[i].img}" class="card-img-top flex-fill" alt="${pets[i].petBreed}">
+        <img src="${pet.img}" class="card-img-top flex-fill" alt="${pet.petBreed}">
 
         <div class="card-body">
-            <h2 class="card-title text-center">${pets[i].petName}</h2>
-            <p><strong>Especie:</strong> ${pets[i].petSpecies}</p>
-            <p><strong>Raza:</strong> ${pets[i].petBreed}</p>
-            <p><strong>Edad:</strong> ${pets[i].petBirth}</p>
-            <p><strong>Peso:</strong> ${pets[i].petWeight}</p>
-            <p><strong>Estado:</strong> ${pets[i].petState}</p>
-            <p><strong>Nombre del dueño:</strong> ${pets[i].nameOwner}</p>
-            <p><strong>Id del dueño:</strong> ${pets[i].documentOwner}</p>
-            <p><strong>Teléfono del dueño:</strong> ${pets[i].phoneOwner}</p>
-            <p><strong>Email del dueño:</strong> ${pets[i].emailOwner}</p>
+            <h2 class="card-title text-center">${pet.petName}</h2>
+            <p><strong>Especie:</strong> ${pet.petSpecies}</p>
+            <p><strong>Raza:</strong> ${pet.petBreed}</p>
+            <p><strong>Edad:</strong> ${pet.petBirth}</p>
+            <p><strong>Peso:</strong> ${pet.petWeight}</p>
+            <p><strong>Estado:</strong> ${pet.petState}</p>
+            <p><strong>Nombre del dueño:</strong> ${pet.owner.nameOwner}</p>
+            <p><strong>Id del dueño:</strong> ${pet.owner.documentOwner}</p>
+            <p><strong>Teléfono del dueño:</strong> ${pet.owner.phoneOwner}</p>
+            <p><strong>Email del dueño:</strong> ${pet.owner.emailOwner}</p>
         </div>
     </div>
 `)

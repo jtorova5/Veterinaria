@@ -406,7 +406,7 @@ const main = document.querySelector('main')
 
 for (let i = 0; i < pets.length; i++) {
     main.innerHTML += (`
-    <div class="card m-5 text-bg-light border-secondary border-2 rounded-3" style="width: 25%">
+    <div class="card m-5 text-bg-light border-secondary border-2 rounded-3 w-25">
         <img src="${pets[i].img}" class="card-img-top flex-fill" alt="${pets[i].petBreed}">
 
         <div class="card-body">

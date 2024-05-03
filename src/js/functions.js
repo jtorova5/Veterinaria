@@ -25,23 +25,11 @@ function calculateAge(petBirth) {
     return age
 }
 
-// Agregar mascota a la lista de mascotas
+function calculateAgeAdded(formBirth) {
+    let today = new Date()
+    let age = today.getFullYear() - formBirth.getFullYear()
 
-function addPet(petName, petSpecies, petBreed, petBirth, petWeight, petState, nameOwner, documentOwner, phoneOwner, emailOwner) {
-    let petAge = calculateAge(petBirth)
-    pets.push({
-        petName: petName,
-        petSpecies: petSpecies,
-        petBreed: petBreed,
-        petAge: petAge,
-        petWeight: petWeight,
-        petState: petState,
-        nameOwner: nameOwner,
-        documentOwner: documentOwner,
-        phoneOwner: phoneOwner,
-        emailOwner: emailOwner
-    })
-    console.log('Mascota agregada')
+    return age
 }
 
 // Mostrar mascotas

@@ -50,7 +50,95 @@
 
     <main>
         <h1 class="text-info ms-5 pt-3">Pacientes actuales</h1>
-        <section id="carousel" class="d-flex justify-content-center flex-wrap"></section>
+        <section id="petsCards" class="d-flex justify-content-center flex-wrap"></section>
+
+        <h2 class="text-info ms-5 pt-3">Agregar paciente</h2>
+        <section id="addPet" class="d-flex justify-content-center mt-3">
+            <form id="form" class="card m-3 border-secondary border-2 rounded-3" style="width: 36rem;">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Nombre:</strong></label>
+                            <input type="text" id="formName" class="form-control" placeholder="Lucas...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Especie:</strong></label>
+                            <input type="text" id="formEspecies" class="form-control" placeholder="Perro, gato...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Raza:</strong></label>
+                            <input type="text" id="formBreed" class="form-control" placeholder="Labrador, pitbull...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Fecha de nacimiento:</strong></label>
+                            <input type="text" id="formBirth" class="form-control" placeholder="mm/dd/yyyy">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Peso:</strong></label>
+                            <input type="text" id="formWeight" class="form-control" placeholder="10, 15...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Estado:</strong></label>
+                            <input type="text" id="formState" class="form-control" placeholder="Estable, crítico">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Nombre dueño:</strong></label>
+                            <input type="text" id="formOwnerName" class="form-control" placeholder="Juan, Laura...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Id dueño:</strong></label>
+                            <input type="text" id="formOwnerId" class="form-control" placeholder="103648246...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Teléfono:</strong></label>
+                            <input type="text" id="formOwnerPhone" class="form-control" placeholder="3007801045...">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Email:</strong></label>
+                            <input type="email" id="formOwnerEmail" class="form-control" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label w-25"><strong>Link imagen:</strong></label>
+                            <input type="text" id="formImg" class="form-control" placeholder="https://www.facebook.com/...">
+                        </div>
+                    </div>
+
+                    <div class="col-auto text-center">
+                        <button type="button" id="add" class="btn btn-info mb-3">Agregar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
     </main>
 
     <footer class="d-flex align-items-center py-4 mt-4 border-top">

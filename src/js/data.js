@@ -1,7 +1,7 @@
 
 let pets = [
     {
-        petName: "Spok",
+        petName: "World destroyer",
         petSpecies: "Cat",
         petBreed: "Stray",
         petBirth: calculateAge(new Date("12/07/2019")),

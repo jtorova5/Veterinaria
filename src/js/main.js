@@ -4,8 +4,11 @@ const main = document.querySelector('#carousel')
 
 for (const pet of pets) {
     carousel.innerHTML += (`
-    <figure class="card m-5 text-bg-light border-secondary border-2 rounded-3 w-25">
-        <img src="${pet.img}" class="card-img-top object-fit-fill h-100" alt="${pet.petBreed}">
+    
+    <figure class="card m-3 border-secondary border-2 rounded-3" style="width: 18rem;">
+        <div class="w-100 h-100 overflow-hidden">
+            <img src="${pet.img}" class="object-fit-fill" alt="${pet.petBreed}" title="${pet.petBreed}">
+        </div>
 
         <div class="card-body">
             <h2 class="card-title text-center">${pet.petName}</h2>
@@ -22,3 +25,16 @@ for (const pet of pets) {
     </figure>
 `)
 }
+
+// Modo oscuro
+
+document.getElementById('toggler').addEventListener('click', function() {
+    document.body.classList.toggle('bg-dark')
+    document.querySelector('#toggler').classList.toggle('bg-dark')
+    document.querySelector('header').classList.toggle('bg-dark')
+    let body = document.querySelectorAll('.card-body')
+    body.forEach(card => {
+        card.classList.toggle('bg-dark')
+        card.classList.toggle('text-light')
+      })
+  })

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veterinaria</title>
     <meta name="description" content="Veterinary management system. Allows CRUD operations to manage pet information" />
     <meta name="keywords" content="Vet, Pet, Veterinary, Management, System, CRUD, Jhonatan, Toro, Vásquez, jtorova5">
     <meta name="sitedomain" content="https://vet.com/" />
@@ -22,11 +21,12 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Style css -->
     <link rel="stylesheet" href="./src/css/style.css">
-    <title>Vet</title>
+    <link rel="shortcut icon" href="./public/icons/huella.ico" type="image/x-icon">
+    <title>Cielo Miow Vet</title>
 </head>
 
 <body>
-    <header class="position-sticky top-0 z-3 bg-white border-bottom">
+    <header class="position-sticky top-0 z-3 bg-light border-bottom">
         <nav class=" container d-flex flex-wrap justify-content-md-between pt-4 mb-4 align-items-center my-auto">
             <div class="col-md-3 mb-2 mb-md-0 text-center align-items-baseline">
                 <a href="/" class="text-decoration-none">
@@ -43,13 +43,13 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-info me-2">Login</button>
-                <button type="button" class="btn btn-info text-white">Sign-up</button>
+                <button id="toggler" type="button" class="btn btn-info text-white">Dark-mode</button>
             </div>
         </nav>
     </header>
 
     <main>
+        <h1 class="text-info ms-5 pt-3">Pacientes actuales</h1>
         <section id="carousel" class="d-flex justify-content-center flex-wrap"></section>
     </main>
 
@@ -59,9 +59,10 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                     <i class="fa-solid fa-shield-dog fa-xl text-info fs-1"></i>
                 </a>
-                <span class="mb-3 mb-md-0 text-info">&copy; 2024 Company, Inc</span>
+                <span class="mb-3 mb-md-0 text-info">&copy; 2024 Cielo Miow, Vet</span>
             </div>
 
+            <!-- Redes sociales -->
             <ul class="nav col-md-4 justify-content-center list-unstyled d-flex fs-3">
                 <li class="ms-3">
                     <a class="text-info" href="https://www.facebook.com/CielomioATV/" target="_blank">

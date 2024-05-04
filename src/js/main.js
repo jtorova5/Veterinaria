@@ -46,6 +46,11 @@ document.getElementById('formAdd').addEventListener('click', function () {
     let formOwnerEmail = document.getElementById("formOwnerEmail").value
     let formImg = document.getElementById("formImg").value
 
+    if (formName.trim() === '' || formSpecies.trim() === '' || formBreed.trim() === '' || formBirth.trim() === '' || formWeight.trim() === '' || formState.trim() === '' || formOwnerName.trim() === '' || formOwnerId.trim() === '' || formOwnerPhone.trim() === '' || formOwnerEmail.trim() === '' || formOwnerEmail.trim() === '') {
+        alert('Por favor complete todos los campos obligatorios.')
+        return
+    }
+
     let formAge = calculateAge(new Date(formBirth))
 
     pets.push({
@@ -72,6 +77,11 @@ document.getElementById('formAdd').addEventListener('click', function () {
 document.getElementById('deletePet').addEventListener('click', function () {
     let deletePetName = document.getElementById("deletePetName").value
     let deleteOwnerName = document.getElementById("deleteOwnerName").value
+
+    if ((deletePetName.trim() === '') || (deleteOwnerName.trim() === '')) {
+        alert('Por favor complete todos los campos obligatorios.')
+        return
+    }
 
     let index = pets.findIndex(pet => (pet.petName).toLowerCase() == (deletePetName).toLowerCase() && (pet.owner.nameOwner).toLowerCase() == (deleteOwnerName).toLowerCase())
 
@@ -105,7 +115,7 @@ document.getElementById('toggler').addEventListener('click', function () {
         btn.classList.toggle('text-dark')
     })
 
-    if (document.querySelector('#toggler').textContent ===  'Dark-mode') {
+    if (document.querySelector('#toggler').textContent === 'Dark-mode') {
         document.querySelector('#toggler').textContent = 'Light-mode'
     } else {
         document.querySelector('#toggler').textContent = 'Dark-mode'

@@ -1,7 +1,8 @@
 
-// Main section
+// main
 const main = document.querySelector('#petsCards')
 
+// mostrar mascotas
 function showPets() {
     petsCards.innerHTML = (``)
     for (const pet of pets) {
@@ -31,13 +32,12 @@ function showPets() {
 
 showPets()
 
-// Agregar mascota
-
-document.getElementById('add').addEventListener('click', function () {
+// agregar mascota
+document.getElementById('formAdd').addEventListener('click', function () {
     let formName = document.getElementById("formName").value
     let formSpecies = document.getElementById("formEspecies").value
     let formBreed = document.getElementById("formBreed").value
-    let formBirth = new Date(document.getElementById("formBirth").value)
+    let formBirth = document.getElementById("formBirth").value
     let formWeight = document.getElementById("formWeight").value
     let formState = document.getElementById("formState").value
     let formOwnerName = document.getElementById("formOwnerName").value
@@ -46,13 +46,13 @@ document.getElementById('add').addEventListener('click', function () {
     let formOwnerEmail = document.getElementById("formOwnerEmail").value
     let formImg = document.getElementById("formImg").value
 
-    console.log(formBirth)
+    let formAge = calculateAge(new Date(formBirth))
 
     pets.push({
         petName: formName,
         petSpecies: formSpecies,
         petBreed: formBreed,
-        petAge: calculateAgeAdded(new Date(formBirth)),
+        petBirth: formAge,
         petWeight: formWeight,
         petState: formState,
         owner: {
@@ -68,15 +68,46 @@ document.getElementById('add').addEventListener('click', function () {
     document.getElementById("form").reset()
 })
 
-// Modo oscuro
+// eliminar mascota
+document.getElementById('deletePet').addEventListener('click', function () {
+    let deletePetName = document.getElementById("deletePetName").value
+    let deleteOwnerName = document.getElementById("deleteOwnerName").value
 
+    let index = pets.findIndex(pet => (pet.petName).toLowerCase() == (deletePetName).toLowerCase() && (pet.owner.nameOwner).toLowerCase() == (deleteOwnerName).toLowerCase())
+
+    if (index != -1) {
+        pets.splice(index, 1)
+        console.log(`Se ha eliminado a ${deletePetName} de la lista de mascotas.`)
+    } else {
+        console.log(`No se encontró a ${deletePetName} en la lista de mascotas.`)
+    }
+
+    showPets()
+    document.getElementById("formDelete").reset()
+})
+
+// modo oscuro
 document.getElementById('toggler').addEventListener('click', function () {
     document.body.classList.toggle('bg-dark')
     document.querySelector('#toggler').classList.toggle('bg-dark')
     document.querySelector('header').classList.toggle('bg-dark')
-    let body = document.querySelectorAll('.card')
-    body.forEach(card => {
+
+    let cards = document.querySelectorAll('.card')
+
+    cards.forEach(card => {
         card.classList.toggle('bg-dark')
         card.classList.toggle('text-light')
     })
+
+    let btns = document.querySelectorAll('.btn')
+
+    btns.forEach(btn => {
+        btn.classList.toggle('text-dark')
+    })
+
+    if (document.querySelector('#toggler').textContent ===  'Dark-mode') {
+        document.querySelector('#toggler').textContent = 'Light-mode'
+    } else {
+        document.querySelector('#toggler').textContent = 'Dark-mode'
+    }
 })

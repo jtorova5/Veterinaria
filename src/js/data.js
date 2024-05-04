@@ -4,7 +4,7 @@ let pets = [
         petName: "World destroyer",
         petSpecies: "Cat",
         petBreed: "Stray",
-        petBirth: calculateAge(new Date("12/07/2019")),
+        petBirth: calculateAge(new Date("2019-07-12")),
         petWeight: 10,
         petState: "Estable",
         owner: {

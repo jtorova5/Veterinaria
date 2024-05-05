@@ -1,39 +1,11 @@
 
-// main
-const main = document.querySelector('#petsCards')
-
 // mostrar mascotas
-function showPets() {
-    petsCards.innerHTML = (``)
-    for (const pet of pets) {
-        petsCards.innerHTML += (`
-    
-    <figure class="card m-3 border-secondary border-2 rounded-3" style="width: 20rem;">
-        <div class="w-100 h-100 overflow-hidden">
-            <img src="${pet.img}" class="object-fit-fill" alt="${pet.petBreed}" title="${pet.petBreed}">
-        </div>
-
-        <div class="card-body">
-            <h2 class="card-title text-center">${pet.petName}</h2>
-            <p><strong>Especie:</strong> ${pet.petSpecies}</p>
-            <p><strong>Raza:</strong> ${pet.petBreed}</p>
-            <p><strong>Edad:</strong> ${pet.petBirth} años</p>
-            <p><strong>Peso:</strong> ${pet.petWeight} kg</p>
-            <p><strong>Estado:</strong> ${pet.petState}</p>
-            <p><strong>Nombre del dueño:</strong> ${pet.owner.nameOwner}</p>
-            <p><strong>Id del dueño:</strong> ${pet.owner.documentOwner}</p>
-            <p><strong>Teléfono del dueño:</strong> ${pet.owner.phoneOwner}</p>
-            <p><strong>Email del dueño:</strong> ${pet.owner.emailOwner}</p>
-        </div>
-    </figure>
-`)
-    }
-}
-
 showPets()
 
 // agregar mascota
 document.getElementById('formAdd').addEventListener('click', function () {
+
+    // obtención de datos
     let formName = document.getElementById("formName").value
     let formSpecies = document.getElementById("formEspecies").value
     let formBreed = document.getElementById("formBreed").value
@@ -46,13 +18,16 @@ document.getElementById('formAdd').addEventListener('click', function () {
     let formOwnerEmail = document.getElementById("formOwnerEmail").value
     let formImg = document.getElementById("formImg").value
 
-    if (formName.trim() === '' || formSpecies.trim() === '' || formBreed.trim() === '' || formBirth.trim() === '' || formWeight.trim() === '' || formState.trim() === '' || formOwnerName.trim() === '' || formOwnerId.trim() === '' || formOwnerPhone.trim() === '' || formOwnerEmail.trim() === '' || formOwnerEmail.trim() === '') {
+    // validación
+    if (formName.trim() === '' || formSpecies.trim() === '' || formBreed.trim() === '' || formBirth.trim() === '' || formWeight.trim() === '' || formState.trim() === '' || formOwnerName.trim() === '' || formOwnerId.trim() === '' || formOwnerPhone.trim() === '' || formOwnerEmail.trim() === '' || formImg.trim() === '') {
         alert('Por favor complete todos los campos obligatorios.')
         return
     }
 
+    // calculo de edad
     let formAge = calculateAge(new Date(formBirth))
 
+    // agregar mascota a la lista
     pets.push({
         petName: formName,
         petSpecies: formSpecies,
@@ -69,39 +44,119 @@ document.getElementById('formAdd').addEventListener('click', function () {
         img: formImg
     })
 
-    showPets()
+    // alerta de agregado
+    Swal.fire({
+        title: `Se ha agregado a ${formName} correctamente.`,
+        width: 600,
+        padding: "3em",
+        color: "#1088A0",
+        background: "url(./../../public/img/fondo-alerta.webp)",
+        backdrop: `
+            rgba(0,0,123,0.4)
+            url("./../../public/gifs/nyan-cat.gif")
+            left top
+            no-repeat
+            `
+    })
+
+    // bandera del modo actual
+    let darkmode = document.querySelector('#toggler').textContent === 'Dark-mode'
+
+    // mostrar mascotas y validar el modo
+    if (!darkmode) {
+        showPets()
+        let cards = document.querySelectorAll('.card')
+
+        cards.forEach(card => {
+            card.classList.toggle('bg-dark')
+            card.classList.toggle('text-light')
+        })
+
+        let form = document.querySelector('#form')
+        let formDelete = document.querySelector('#formDelete')
+
+        form.classList.toggle('bg-dark')
+        form.classList.toggle('text-light')
+        formDelete.classList.toggle('bg-dark')
+        formDelete.classList.toggle('text-light')
+    } else {
+        showPets()
+    }
+
+    // limpiar formulario
     document.getElementById("form").reset()
 })
 
 // eliminar mascota
 document.getElementById('deletePet').addEventListener('click', function () {
+
+    // obtención de datos
     let deletePetName = document.getElementById("deletePetName").value
     let deleteOwnerName = document.getElementById("deleteOwnerName").value
 
+    // validacaión de datos
     if ((deletePetName.trim() === '') || (deleteOwnerName.trim() === '')) {
         alert('Por favor complete todos los campos obligatorios.')
         return
     }
 
+    // eliminar mascota de la lista
     let index = pets.findIndex(pet => (pet.petName).toLowerCase() == (deletePetName).toLowerCase() && (pet.owner.nameOwner).toLowerCase() == (deleteOwnerName).toLowerCase())
 
     if (index != -1) {
         pets.splice(index, 1)
-        console.log(`Se ha eliminado a ${deletePetName} de la lista de mascotas.`)
+        Swal.fire({
+            icon: "success",
+            title: "Eso es todo...",
+            text: `Se ha eliminado a ${deletePetName} de la lista de mascotas.`,
+        })
     } else {
-        console.log(`No se encontró a ${deletePetName} en la lista de mascotas.`)
+        Swal.fire({
+            icon: "error",
+            title: "Un momento...",
+            text: `
+            No se encontró ninguna mascota llamada ${deletePetName} que sea propiedad de ${deleteOwnerName}.`,
+        })
     }
 
-    showPets()
+    // bandera del modo actual
+    let darkmode = document.querySelector('#toggler').textContent === 'Dark-mode'
+
+    // mostrar mascotas y validar el modo
+    if (!darkmode) {
+        showPets()
+        let cards = document.querySelectorAll('.card')
+
+        cards.forEach(card => {
+            card.classList.toggle('bg-dark')
+            card.classList.toggle('text-light')
+        })
+
+        let form = document.querySelector('#form')
+        let formDelete = document.querySelector('#formDelete')
+
+        form.classList.toggle('bg-dark')
+        form.classList.toggle('text-light')
+        formDelete.classList.toggle('bg-dark')
+        formDelete.classList.toggle('text-light')
+
+    } else {
+        showPets()
+    }
+
+    // limpiar formulario
     document.getElementById("formDelete").reset()
 })
 
 // modo oscuro
 document.getElementById('toggler').addEventListener('click', function () {
+
+    // obtención de datos
     document.body.classList.toggle('bg-dark')
     document.querySelector('#toggler').classList.toggle('bg-dark')
     document.querySelector('header').classList.toggle('bg-dark')
 
+    // variación del modo
     let cards = document.querySelectorAll('.card')
 
     cards.forEach(card => {

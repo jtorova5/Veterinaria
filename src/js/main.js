@@ -53,7 +53,7 @@ document.getElementById('formAdd').addEventListener('click', function () {
         background: "url(./../../public/img/fondo-alerta.webp)",
         backdrop: `
             rgba(0,0,123,0.4)
-            url("./../../public/gifs/nyan-cat.gif")
+            url("./../../public/img/nyan-cat.gif")
             left top
             no-repeat
             `
